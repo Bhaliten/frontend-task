@@ -34,7 +34,7 @@ export class LayoutComponent implements OnInit {
 
         this.items = [
             {
-                label: 'Users',
+                label: 'Felhasználó kezelés',
                 icon: 'pi pi-fw pi-user',
                 routerLink: '/generate-value-for-admin',
             }
