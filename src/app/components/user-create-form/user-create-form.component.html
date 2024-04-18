@@ -1,29 +1,28 @@
 <form [formGroup]="createUserForm">
 
-    <div class="flex">
+    <div class="flex flex-column">
 
         <div class="flex flex-column gap-2">
             <label for="firstName">First Name</label>
             <input pInputText id="firstName" aria-describedby="firstName-help" formControlName="firstName"/>
-            <small id="firstName-help">Enter your username to reset your password.</small>
+            <small id="firstName-help"></small>
         </div>
 
         <div class="flex flex-column gap-2">
             <label for="firstName">Last Name</label>
             <input pInputText id="lastName" aria-describedby="lastName-help" formControlName="lastName"/>
-            <small id="lastName-help">Enter your username to reset your password.</small>
+            <small id="lastName-help"></small>
         </div>
 
 
         <div class="flex flex-column gap-2">
             <label for="email">Email</label>
             <input pInputText id="email" aria-describedby="email-help" formControlName="email"/>
-            <small id="email-help">Enter your username to reset your password.</small>
+            <small id="email-help"></small>
         </div>
 
     </div>
     <p *ngIf="createUserForm.errors">Hiba</p>
-    <button (click)="addNewUser()">Add</button>
+    <p-button [disabled]="!createUserForm.valid" (click)="addNewUser()" label="Submit"></p-button>
 </form>
 
-{{createUserForm.getRawValue().email}}

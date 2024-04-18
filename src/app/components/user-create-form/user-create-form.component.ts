@@ -4,6 +4,7 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import {UserHandlerService} from "../../services/user-handler.service";
 import {User} from "../../models/user";
 import {NgIf} from "@angular/common";
+import {ButtonModule} from "primeng/button";
 
 @Component({
     selector: 'app-user-create-form',
@@ -12,7 +13,8 @@ import {NgIf} from "@angular/common";
         ChipsModule,
         FormsModule,
         ReactiveFormsModule,
-        NgIf
+        NgIf,
+        ButtonModule
     ],
     templateUrl: './user-create-form.component.html',
     styleUrl: './user-create-form.component.scss'
@@ -25,16 +27,10 @@ export class UserCreateFormComponent {
     createUserForm = new FormGroup({
         firstName: new FormControl('', [Validators.required]),
         lastName: new FormControl('', [Validators.required]),
-        email: new FormControl(''),
+        email: new FormControl('', [Validators.email]),
     });
 
     addNewUser() {
-        // const user = new User(
-        //     "",
-        //     this.createUserForm.getRawValue().firstName,
-        //     this.createUserForm.getRawValue().lastName,
-        //     this.createUserForm.getRawValue().email
-        // );
         if (this.createUserForm.valid){
             let user: User = this.createUserForm.value as User;
             this.userHandlerService.testData.push(user);
