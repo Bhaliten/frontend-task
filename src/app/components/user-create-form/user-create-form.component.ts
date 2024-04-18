@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {ChipsModule} from "primeng/chips";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {UserHandlerService} from "../../services/user-handler.service";
-import {User} from "../../models/user";
 import {NgIf} from "@angular/common";
 import {ButtonModule} from "primeng/button";
 import {CardModule} from "primeng/card";
