@@ -23,8 +23,8 @@ import {CardModule} from "primeng/card";
 })
 export class UserCreateFormComponent {
 
-    // constructor(private userHandlerService: UserHandlerService) {
-    // }
+    constructor(private userHandlerService: UserHandlerService) {
+    }
 
     createUserForm = new FormGroup({
         firstName: new FormControl('', [Validators.required]),
@@ -35,7 +35,7 @@ export class UserCreateFormComponent {
     addNewUser() {
         if (this.createUserForm.valid){
             let user: User = this.createUserForm.value as User;
-            // this.userHandlerService.testData.push(user);
+            this.userHandlerService.testData.push(user);
             this.createUserForm.reset();
         }
 

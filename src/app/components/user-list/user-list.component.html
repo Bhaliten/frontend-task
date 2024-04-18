@@ -1,20 +1,48 @@
-<p-table [value]="getUsers()" [tableStyle]="{ 'min-width': '50rem' }">
-  <ng-template pTemplate="header">
-    <tr>
-      <th>ID</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-user>
-    <tr>
-      <td>{{ user.id }}</td>
-      <td>{{ user.firstName }}</td>
-      <td>{{ user.lastName }}</td>
-      <td>{{ user.email }}</td>
-    </tr>
-  </ng-template>
-</p-table>
+<p-card>
+    <form [formGroup]="searchUsersForm">
+        <div class="flex flex-column gap-2">
+            <label for="firstName">First Name</label>
+            <input pInputText id="firstName" aria-describedby="firstName-help" formControlName="firstName"/>
+            <div class="warning-message">
+                <small *ngIf="
+            searchUsersForm.get('firstName')?.touched
+            &&
+            searchUsersForm.get('firstName')?.errors?.['required']" id="firstName-help">First Name is required!</small>
+            </div>
+        </div>
 
-<p-button label="Fetch" (click)="fetchUsers()"></p-button>
+        <div class="flex flex-column gap-2">
+            <label for="lastName">Last Name</label>
+            <input pInputText id="lastName" aria-describedby="lastName-help" formControlName="lastName"/>
+            <small *ngIf="
+            searchUsersForm.get('lastName')?.touched
+            &&
+            searchUsersForm.get('lastName')?.errors?.['required']" id="lastName-help">Last Name is required!</small>
+        </div>
+        <p-button [disabled]="!searchUsersForm.valid"  label="Search" (click)="fetchUsers()"></p-button>
+
+    </form>
+
+    <p-table [value]="getUsers()" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.email }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+
+
+
+</p-card>
