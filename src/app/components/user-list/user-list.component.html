@@ -19,7 +19,7 @@
             &&
             searchUsersForm.get('lastName')?.errors?.['required']" id="lastName-help">Last Name is required!</small>
         </div>
-        <p-button [disabled]="!searchUsersForm.valid"  label="Search" (click)="fetchUsers()"></p-button>
+        <p-button [disabled]="!searchUsersForm.valid" label="Search" (click)="fetchUsers()"></p-button>
 
     </form>
 
@@ -41,8 +41,6 @@
             </tr>
         </ng-template>
     </p-table>
-
-
 
 
 </p-card>

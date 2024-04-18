@@ -6,6 +6,7 @@ import {User} from "../../models/user";
 import {NgIf} from "@angular/common";
 import {ButtonModule} from "primeng/button";
 import {CardModule} from "primeng/card";
+import {CreateUserRequest} from "../../models/create-user-request";
 
 @Component({
     selector: 'app-user-create-form',
@@ -33,9 +34,13 @@ export class UserCreateFormComponent {
     });
 
     addNewUser() {
-        if (this.createUserForm.valid){
-            let user: User = this.createUserForm.value as User;
-            this.userHandlerService.testData.push(user);
+        if (this.createUserForm.valid) {
+            // let user = this.createUserForm.value as User;
+            let createUser = this.createUserForm.value as CreateUserRequest;
+            // this.userHandlerService.testData.push(user);
+            this.userHandlerService.createUser(createUser).subscribe(createdUser =>
+                this.userHandlerService.testData.push(createdUser)
+            );
             this.createUserForm.reset();
         }
 
