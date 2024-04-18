@@ -35,11 +35,9 @@ export class UserCreateFormComponent {
 
     addNewUser() {
         if (this.createUserForm.valid) {
-            // let user = this.createUserForm.value as User;
             let createUser = this.createUserForm.value as CreateUserRequest;
-            // this.userHandlerService.testData.push(user);
             this.userHandlerService.createUser(createUser).subscribe(createdUser =>
-                this.userHandlerService.testData.push(createdUser)
+                console.log(createdUser)
             );
             this.createUserForm.reset();
         }

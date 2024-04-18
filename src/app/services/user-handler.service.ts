@@ -4,6 +4,7 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {SearchUsersResponse} from "../models/search-users-response";
 import {CreateUserRequest} from "../models/create-user-request";
+import {environment} from "../../environments/environment";
 
 @Injectable({
     providedIn: 'root',
@@ -23,14 +24,40 @@ export class UserHandlerService {
     }
 
     fetchUsersByFirstAndLastName(first: string, last: string): Observable<SearchUsersResponse> {
-        const url = "http://localhost:8080/api/elasticsearch/search";
+
+        if (!environment.production) {
+            const filteredUsers = this.testData.filter(user =>
+                user.lastName.toLowerCase().includes(last.toLowerCase()) &&
+                user.firstName.toLowerCase().includes(first.toLowerCase())
+            );
+            return new Observable<SearchUsersResponse>(observer => {
+                observer.next(new SearchUsersResponse(filteredUsers.length, filteredUsers))
+
+                observer.complete()
+            });
+        }
+
+        const url = environment.serverUrl + "/api/elasticsearch/search";
         const options = {params: new HttpParams().set('lastName', last).set('firstName', first)};
         console.log(options.params)
         return this.httpClient.get<SearchUsersResponse>(url, options);
     }
 
     createUser(user: CreateUserRequest): Observable<User> {
-        const url = "http://localhost:8080/api/elasticsearch/create";
+
+        if (!environment.production) {
+            console.log(environment)
+
+            const createdUser = new User('randomId', user.firstName, user.lastName, user.email);
+            this.testData.push(createdUser)
+            return new Observable<User>(observer => {
+                observer.next(createdUser)
+
+                observer.complete()
+            });
+        }
+
+        const url = environment.serverUrl + "/api/elasticsearch/create";
         return this.httpClient.post<User>(url, user);
     }
 }
