@@ -1,12 +1,14 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {routes} from "../../../app.routes";
 import {RandomStringService} from "../../../services/random-string.service";
+import {UserListComponent} from "../../user-list/user-list.component";
 
 @Component({
   selector: 'app-user-handler',
   standalone: true,
-  imports: [],
+  imports: [
+    UserListComponent
+  ],
   templateUrl: './user-handler.component.html',
   styleUrl: './user-handler.component.scss'
 })
