@@ -1,3 +1,6 @@
+
+
+
 .container {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -12,15 +15,15 @@
   padding: 20px;
 }
 
-h1 {
+h1, h2 {
   text-align: center;
   color: #333;
 }
 
 p {
-  text-align: center;
   color: #666;
   font-size: 18px;
+  line-height: 1.6;
 }
 
 .image-grid {
@@ -33,4 +36,17 @@ p {
 .image-grid img {
   width: 100%;
   border-radius: 8px;
+}
+
+.about-us {
+  margin-top: 50px;
+}
+
+.find-more {
+  margin-top: 50px;
+}
+
+.contact-info {
+  text-align: center;
+  margin-top: 30px;
 }
