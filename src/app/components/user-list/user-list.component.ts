@@ -35,7 +35,7 @@ export class UserListComponent {
     });
 
     getUsers(): User[] {
-        return this.userHandlerService.testData;
+        return this.userHandlerService.cachedUsers;
     }
 
     fetchUsers(): void {
@@ -47,7 +47,7 @@ export class UserListComponent {
                 userSearch.lastName
             ).subscribe(users => {
                 console.log(users)
-                this.userHandlerService.testData = users.userList;
+                this.userHandlerService.cachedUsers = users.userList;
             })
         }
 

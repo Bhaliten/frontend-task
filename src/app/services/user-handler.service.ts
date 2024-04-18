@@ -12,7 +12,7 @@ import {environment} from "../../environments/environment";
 })
 export class UserHandlerService {
 
-    testData: User[] = [
+    cachedUsers: User[] = [
         new User("7d192f26-91c8-4db4-a92b-9f6f269e1a9a", "John", "Doe", "john@example.com"),
         new User("3b661b35-0e61-4925-81e0-628e3ef59368", "Alice", "Smith", "alice@example.com"),
         new User("a071b7e3-1c16-491c-94cc-1e48a792b53a", "Bob", "Johnson", "bob@example.com"),
@@ -26,7 +26,7 @@ export class UserHandlerService {
     fetchUsersByFirstAndLastName(first: string, last: string): Observable<SearchUsersResponse> {
 
         if (!environment.production) {
-            const filteredUsers = this.testData.filter(user =>
+            const filteredUsers = this.cachedUsers.filter(user =>
                 user.lastName.toLowerCase().includes(last.toLowerCase()) &&
                 user.firstName.toLowerCase().includes(first.toLowerCase())
             );
@@ -49,7 +49,7 @@ export class UserHandlerService {
             console.log(environment)
 
             const createdUser = new User('randomId', user.firstName, user.lastName, user.email);
-            this.testData.push(createdUser)
+            this.cachedUsers.push(createdUser)
             return new Observable<User>(observer => {
                 observer.next(createdUser)
 

@@ -1,5 +1,5 @@
 <p-card header="Search users" subheader="Here you can find users by first and last name">
-    <form [formGroup]="searchUsersForm">
+    <form [formGroup]="searchUsersForm" class="mb-3">
         <div class="flex flex-column gap-2">
             <label for="firstName">First Name</label>
             <input pInputText id="firstName" aria-describedby="firstName-help" formControlName="firstName"/>
@@ -19,7 +19,9 @@
             &&
             searchUsersForm.get('lastName')?.errors?.['required']" id="lastName-help">Last Name is required!</small>
         </div>
-        <p-button [disabled]="!searchUsersForm.valid" label="Search" (click)="fetchUsers()"></p-button>
+        <div class="flex flex-row-reverse flex-wrap m-3">
+            <p-button [disabled]="!searchUsersForm.valid" label="Search" (click)="fetchUsers()"></p-button>
+        </div>
 
     </form>
 
