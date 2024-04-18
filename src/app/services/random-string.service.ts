@@ -1,26 +1,27 @@
 import {Injectable} from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class RandomStringService {
 
-  constructor() {
-  }
+    isValidString(input: string): boolean {
+        const regex = /^\d{2}\w{2}$/;
+        return regex.test(input);
+    }
 
-  isValidString(input: string): boolean {
-    // Regular expression to match string starting with 2 numbers, followed by exactly 2 characters, and has a total length of 4
-    const regex = /^\d{2}\w{2}$/;
-    return regex.test(input);
-  }
+    generateRandomString(): string {
+        const randomNumbers: string = this.generateRandomNumber().toString() + this.generateRandomNumber().toString();
+        const randomChars: string = this.generateRandomCharacter() + this.generateRandomCharacter();
 
-  generateRandomString(): string {
-    const getRandomNumber = (): number => Math.floor(Math.random() * 10); // Random number between 0 and 9
-    const getRandomChar = (): string => String.fromCharCode(97 + Math.floor(Math.random() * 26)); // Random lowercase character (ASCII)
+        return randomNumbers + randomChars;
+    }
 
-    const randomNumbers: string = getRandomNumber().toString() + getRandomNumber().toString();
-    const randomChars: string = getRandomChar() + getRandomChar();
+    generateRandomNumber(): number {
+        return Math.floor(Math.random() * 10);
+    }
 
-    return randomNumbers + randomChars;
-  }
+    generateRandomCharacter(): string {
+        return String.fromCharCode(97 + Math.floor(Math.random() * 26));
+    }
 }

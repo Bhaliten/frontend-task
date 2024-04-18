@@ -38,22 +38,6 @@ export class LayoutComponent implements OnInit {
                 icon: 'pi pi-fw pi-user',
                 routerLink: '/generate-value-for-admin',
             }
-            // {
-            //     label: 'Users',
-            //     icon: 'pi pi-fw pi-user',
-            //     items: [
-            //         {
-            //             label: 'New',
-            //             icon: 'pi pi-fw pi-user-plus',
-            //             routerLink: '/new'
-            //         },
-            //         {
-            //             label: 'Search',
-            //             icon: 'pi pi-fw pi-users',
-            //             routerLink: '/search'
-            //         }
-            //     ]
-            // }
         ];
     }
 }

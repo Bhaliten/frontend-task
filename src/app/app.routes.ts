@@ -6,9 +6,6 @@ import {GenerateValueForAdminComponent} from "./components/generate-value-for-ad
 export const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
   { path: '', component: WelcomeComponent },
-  { path: 'new', component: WelcomeComponent },
-  { path: 'search', component: WelcomeComponent },
-  { path: 'user-handler', component: UserHandlerComponent },
   { path: 'admin', component: UserHandlerComponent },
   { path: 'admin/:randomId', component: UserHandlerComponent },
   { path: 'generate-value-for-admin', component: GenerateValueForAdminComponent },
