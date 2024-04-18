@@ -10,7 +10,8 @@
                     <small *ngIf="
             createUserForm.get('firstName')?.touched
             &&
-            createUserForm.get('firstName')?.errors?.['required']" id="firstName-help">First Name is required!</small>
+            createUserForm.get('firstName')?.errors?.['required']" id="firstName-help" class="text-red-700">First Name
+                        is required!</small>
                 </div>
             </div>
 
@@ -20,14 +21,18 @@
                 <small *ngIf="
             createUserForm.get('lastName')?.touched
             &&
-            createUserForm.get('lastName')?.errors?.['required']" id="lastName-help">Last Name is required!</small>
+            createUserForm.get('lastName')?.errors?.['required']" id="lastName-help" class="text-red-700">Last Name is
+                    required!</small>
             </div>
 
 
             <div class="flex flex-column">
                 <label for="email">Email</label>
                 <input pInputText id="email" aria-describedby="email-help" formControlName="email"/>
-
+                <small *ngIf="
+            createUserForm.get('email')?.touched
+            &&
+            createUserForm.get('email')?.errors?.['email']" id="email-help" class="text-red-700">Not a valid email!</small>
             </div>
 
         </div>

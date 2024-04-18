@@ -1,6 +1,6 @@
 <p-card header="Search users" subheader="Here you can find users by first and last name">
     <form [formGroup]="searchUsersForm" class="mb-3">
-        <div class="flex gap-3">
+        <div class="flex gap-3 flex-row">
             <div class="flex flex-column">
                 <label for="firstName">First Name</label>
                 <input pInputText id="firstName" aria-describedby="firstName-help" formControlName="firstName"/>
@@ -8,7 +8,7 @@
                     <small *ngIf="
             searchUsersForm.get('firstName')?.touched
             &&
-            searchUsersForm.get('firstName')?.errors?.['required']" id="firstName-help">First Name is required!</small>
+            searchUsersForm.get('firstName')?.errors?.['required']" id="firstName-help" class="text-red-700">First Name is required!</small>
                 </div>
             </div>
 
@@ -18,9 +18,9 @@
                 <small *ngIf="
             searchUsersForm.get('lastName')?.touched
             &&
-            searchUsersForm.get('lastName')?.errors?.['required']" id="lastName-help">Last Name is required!</small>
+            searchUsersForm.get('lastName')?.errors?.['required']" id="lastName-help" class="text-red-700">Last Name is required!</small>
             </div>
-            <div class="flex flex-row-reverse flex-wrap m-3">
+            <div class="flex align-content-end flex-wrap">
                 <p-button [disabled]="!searchUsersForm.valid" label="Search" (click)="fetchUsers()"></p-button>
             </div>
         </div>
