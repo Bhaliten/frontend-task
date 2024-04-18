@@ -48,7 +48,7 @@ export class UserListComponent {
             ).subscribe(users => {
                 console.log(users)
                 this.userHandlerService.cachedUsers = users.userList;
-            })
+            }, error => alert('Something went wrong!'))
         }
 
     }

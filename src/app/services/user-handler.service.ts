@@ -59,7 +59,7 @@ export class UserHandlerService {
   }
 
   createDummyUser(user: CreateUserRequest): Observable<User> {
-    const createdUser = new User('randomId', user.firstName, user.lastName, user.email);
+    const createdUser = new User('a071b7e3-1c16-491c-94cc-1e48a792b53a', user.firstName, user.lastName, user.email);
     this.cachedUsers.push(createdUser)
     return new Observable<User>(observer => {
       observer.next(createdUser)
