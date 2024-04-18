@@ -1,28 +1,36 @@
-<form [formGroup]="createUserForm">
+<p-card header="New user" subheader="Here you can add new user">
+    <form [formGroup]="createUserForm">
 
-    <div class="flex flex-column">
+        <div class="flex flex-column">
 
-        <div class="flex flex-column gap-2">
-            <label for="firstName">First Name</label>
-            <input pInputText id="firstName" aria-describedby="firstName-help" formControlName="firstName"/>
-            <small id="firstName-help"></small>
+            <div class="flex flex-column gap-2">
+                <label for="firstName">First Name</label>
+                <input pInputText id="firstName" aria-describedby="firstName-help" formControlName="firstName"/>
+                <div class="warning-message">
+                    <small *ngIf="
+            createUserForm.get('firstName')?.touched
+            &&
+            createUserForm.get('firstName')?.errors?.['required']" id="firstName-help">First Name is required!</small>
+                </div>
+            </div>
+
+            <div class="flex flex-column gap-2">
+                <label for="lastName">Last Name</label>
+                <input pInputText id="lastName" aria-describedby="lastName-help" formControlName="lastName"/>
+                <small *ngIf="
+            createUserForm.get('lastName')?.touched
+            &&
+            createUserForm.get('lastName')?.errors?.['required']" id="lastName-help">Last Name is required!</small>
+            </div>
+
+
+            <div class="flex flex-column gap-2">
+                <label for="email">Email</label>
+                <input pInputText id="email" aria-describedby="email-help" formControlName="email"/>
+
+            </div>
+
         </div>
-
-        <div class="flex flex-column gap-2">
-            <label for="firstName">Last Name</label>
-            <input pInputText id="lastName" aria-describedby="lastName-help" formControlName="lastName"/>
-            <small id="lastName-help"></small>
-        </div>
-
-
-        <div class="flex flex-column gap-2">
-            <label for="email">Email</label>
-            <input pInputText id="email" aria-describedby="email-help" formControlName="email"/>
-            <small id="email-help"></small>
-        </div>
-
-    </div>
-    <p *ngIf="createUserForm.errors">Hiba</p>
-    <p-button [disabled]="!createUserForm.valid" (click)="addNewUser()" label="Submit"></p-button>
-</form>
-
+        <p-button [disabled]="!createUserForm.valid" (click)="addNewUser()" label="Submit"></p-button>
+    </form>
+</p-card>

@@ -5,6 +5,7 @@ import {UserHandlerService} from "../../services/user-handler.service";
 import {User} from "../../models/user";
 import {NgIf} from "@angular/common";
 import {ButtonModule} from "primeng/button";
+import {CardModule} from "primeng/card";
 
 @Component({
     selector: 'app-user-create-form',
@@ -14,7 +15,8 @@ import {ButtonModule} from "primeng/button";
         FormsModule,
         ReactiveFormsModule,
         NgIf,
-        ButtonModule
+        ButtonModule,
+        CardModule
     ],
     templateUrl: './user-create-form.component.html',
     styleUrl: './user-create-form.component.scss'
@@ -34,6 +36,7 @@ export class UserCreateFormComponent {
         if (this.createUserForm.valid){
             let user: User = this.createUserForm.value as User;
             this.userHandlerService.testData.push(user);
+            this.createUserForm.reset();
         }
 
     }
