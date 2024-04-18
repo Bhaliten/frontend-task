@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {RandomStringService} from "../../../services/random-string.service";
 import {UserListComponent} from "../../user-list/user-list.component";
@@ -18,7 +18,7 @@ import {DialogModule} from "primeng/dialog";
     templateUrl: './user-handler.component.html',
     styleUrl: './user-handler.component.scss'
 })
-export class UserHandlerComponent {
+export class UserHandlerComponent implements OnInit{
     visible: boolean = false;
 
     constructor(private route: ActivatedRoute,
